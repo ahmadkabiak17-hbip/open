@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just One Question ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    width:400px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+h1{
+    color:#ff4d6d;
+    margin-bottom:15px;
+}
+
+p{
+    color:#666;
+    margin-bottom:30px;
+}
+
+.buttons{
+    position:relative;
+    height:120px;
+}
+
+button{
+    border:none;
+    padding:12px 30px;
+    border-radius:50px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#yesBtn{
+    background:#ff4d6d;
+    color:white;
+}
+
+#yesBtn:hover{
+    transform:scale(1.08);
+}
+
+#noBtn{
+    position:absolute;
+    background:#eee;
+    left:220px;
+}
+
+.heart{
+    font-size:50px;
+    margin-bottom:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="heart">❤️</div>
+
+    <h1>One Question...</h1>
+
+    <p>Will you be my girlfriend?</p>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+function moveButton() {
+    const card = document.querySelector(".buttons");
+
+    const maxX = card.clientWidth - noBtn.offsetWidth;
+    const maxY = card.clientHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+
+document.getElementById("yesBtn").addEventListener("click", () => {
+    document.querySelector(".card").innerHTML = `
+        <div style="font-size:70px;">🥳❤️</div>
+        <h1>YAY!</h1>
+        <p>You made my day 💖</p>
+    `;
+});
+</script>
+
+</body>
+</html>
